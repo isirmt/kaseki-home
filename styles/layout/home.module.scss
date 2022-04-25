@@ -1,0 +1,193 @@
+@import "../global/responsive.scss";
+@import "../global/variable.scss";
+
+.back {
+  background-color: black;
+  margin: 0;
+  height: min(calc(100vw * 9 / 16), calc(vwhMin(100) - 5rem));
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .backImg {
+    opacity: .4;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  p {
+    position: relative;
+    margin: 0;
+    color: $c-wText;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  p:nth-child(1) {
+    font-size: vwhMin(12);
+  }
+
+  p:nth-child(2) {
+    font-size: vwhMin(5, 5vw);
+  }
+}
+
+.homeGrid {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  grid-template-rows: 30rem 1fr;
+  grid-template-areas:
+    "areaA areaB"
+    "areaC areaC";
+  margin: min(5vw, 5vh);
+
+  @include mqUp(md) {
+    grid-template-rows: 30rem 30rem 1fr;
+    grid-template-areas:
+      "areaA areaA"
+      "areaB areaB"
+      "areaC areaC";
+  }
+
+  .sectionTitle {
+    color: $c-text;
+    font-weight: normal;
+    text-align: center;
+    font-size: 1.5rem;
+    height: 2rem;
+    user-select: none;
+  }
+
+  > div {
+    position: relative;
+    overflow: hidden;
+
+    ul {
+      margin: 1rem auto;
+      padding: 0;
+      width: min(50%, 500px);
+      @include mqUp(md) {
+        width: 85%;
+      }
+      li {
+        list-style: none;
+        font-size: 1.2rem;
+        // width: 300px;
+
+        a {
+          text-decoration: none;
+          color: $c-text;
+        }
+
+        small {
+          font-size: 0.9em;
+          color: $c-dimText;
+          margin-left: 1em;
+        }
+
+        small::before {
+          color: $c-dimText;
+          content: "- ";
+          user-select: none;
+        }
+
+        .typeTitle {
+          color: $c-green;
+        }
+      }
+    }
+
+    .moreTextP {
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .moreText {
+      color: black;
+      width: 6rem;
+      // text-align: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+  }
+
+  > .gridA {
+    grid-area: areaA;
+    // border: black solid 1px;
+    justify-content: right;
+  }
+
+  > .gridB {
+    grid-area: areaB;
+    // border: black solid 1px;
+    user-select: none;
+  }
+
+  > .gridC {
+    grid-area: areaC;
+    padding: vwhMin(8, 8vw);
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.sbTile {
+  display: flex;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 40% 1fr 40%;
+  grid-template-rows: calc((40vw - vwhMin(8, 8vw)) * 9 / 16);
+  grid-template-areas: "tileA n tileB";
+
+  @include mqUp(md) {
+    grid-template-columns: 100%;
+    grid-template-rows: calc((90vw - vwhMin(8, 8vw) * 2) * 9 / 16) 5rem;
+    grid-template-areas:
+      "tileA"
+      "tileB";
+  }
+
+  > div {
+    position: relative;
+  }
+
+  .gridA {
+    grid-area: tileA;
+  }
+
+  .gridB {
+    grid-area: tileB;
+  }
+
+  div {
+    font-size: vwhMin(3, 3vw);
+    color: $c-dimText;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    @include mqUp(md) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.sbTile:nth-child(2n){
+  @include mqUp(md) {
+    grid-template-areas:
+      "tileB"
+      "tileA";
+  }
+}
+
+.sbTile:not(:last-child) {
+  margin-bottom: vwhMin(5, 5vw);
+}
